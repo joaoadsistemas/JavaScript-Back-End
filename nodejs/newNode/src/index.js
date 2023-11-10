@@ -9,52 +9,78 @@ app.use(express.json());
 
 const projects = [];
 
+function logRoutes(request, response, next) {
+    const { method, url } = request;
+    const route = `[${method.toUpperCase()}] ${url}`;
+    console.log(route);
+    return next();
+}
+
+app.use(logRoutes);
+
 
 app.get('/projects', (request, response) => {
-    // TODOS OS DADOS ENVIADOS NA URL(QUERYPARAMS OU ROUTEPARAMS) OU BODY(BODYPARAMS) CAI NA REQUEST
-    // http://localhost:3000/projects/?title=Node&owner=Joao
-    const query = request.query;
-    console.log(query)
-    console.log(query.title);
-    
 
-    response.json([
-        'Projeto 1',
-        'Projeto 2'
-    ]);
+    response.json(projects);
+
 });
 
 
 app.post('/projects', (request, response) => {
-    const body = request.body;
-    console.log(body);
+    const {name, owner} = request.body;
+    const project = {
+        id: uuidv4(),
+        name,
+        owner
+    }
+    projects.push(project);
 
-
-
-    response.json([
-        'Projeto 1',
-        'Projeto 2',
-        'Projeto 3'
-    ]);
+    response.status(201).json(project);
 });
 
-app.put('/projects/:id/:projectId', (request, response) => {
+app.put('/projects/:id', (request, response) => {
+    const { id } = request.params;
+    const { name, owner } = request.body;
 
-    const params = request.params;
-    console.log(params);
+    const projectIndex = projects.findIndex(p => p.id === id);
+    
+    if(projectIndex < 0) {
+        response.status(404).json({
+            error: "Project not found"
+        })
+    }
 
-    response.json([
-        'Projeto 4',
-        'Projeto 2',
-        'Projeto 3'
-    ]);
+    if (!name || !owner) {
+        response.status(400).json({
+            error: "Name and owner are required"
+        })
+    }
+
+    const project = {
+        id,
+        name,
+        owner
+    }
+
+    projects[projectIndex] = project;
+
+    response.json(project);
 });
 
 app.delete('/projects/:id', (request, response) => {
-    response.json([
-        'Projeto 4',
-        'Projeto 3'
-    ]);
+    const { id } = request.params;
+    const indexProject = projects.findIndex(p => p.id === id);
+    projects.splice(indexProject, 1);
+
+    if(projectIndex < 0) {
+        response.status(404).json({
+            error: "Project not found"
+        })
+    }
+
+    response.status(200).json({
+        msg: 'Object removed'
+    });
 });
 
 app.listen(3000, () => {
