@@ -60,9 +60,29 @@ router.get('/contact/:nome-:sobrenome', (req: Request, res: Response) => {
 router.get('/nome', (req: Request, res: Response) => {
 
     let nome: string = req.query.nome as string;
+    let idade: string = req.query.idade as string
 
     res.render('pages/nome', {
-        nome
+        nome,
+        idade
+    });
+
+});
+
+router.get('/age', (req: Request, res: Response) => {
+
+    let yearActual: number = new Date().getFullYear();
+    let age: number = 0;
+
+    console.log(req.query.yearnasc)
+
+    if (req.query.yearnasc != null) {
+        let year: number = parseInt(req.query.yearnasc as string);
+        age = yearActual - year;
+    }
+
+    res.render("pages/age", {
+        age
     });
 
 });

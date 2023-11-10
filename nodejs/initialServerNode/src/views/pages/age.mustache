@@ -1,0 +1,18 @@
+{{>partials/header}}
+
+<h2>Qual sua idade?</h2>
+<form method="GET">
+    <input type="number" name="yearnasc" placeholder="Digite seu ano de nascimento:" /><br/>
+    <input type="submit" value="Enviar">
+</form>
+
+<hr/>
+
+{{#age}}
+<p> Sua idade é de {{age}}</p>
+{{/age}}
+
+{{^age}}
+<p>NADA AQUI</p>
+{{/age}}
+{{>partials/footer}}
