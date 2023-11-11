@@ -1,0 +1,4 @@
+"material-icon-theme.activeIconPack": "nest",
+    "typescript.preferences.includePackageJsonAutoImports": "on",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.suggest.autoImports": true,
