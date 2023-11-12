@@ -5,4 +5,5 @@ export declare class TodoEntity {
     createdAt: string;
     updateAt: string;
     deletedAt: string;
+    constructor(todo?: Partial<TodoEntity>);
 }

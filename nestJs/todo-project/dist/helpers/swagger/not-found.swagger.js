@@ -9,20 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateTodoDto = void 0;
+exports.NotFoundSwagger = void 0;
 const swagger_1 = require("@nestjs/swagger");
-const class_validator_1 = require("class-validator");
-class CreateTodoDto {
+class NotFoundSwagger {
 }
-exports.CreateTodoDto = CreateTodoDto;
+exports.NotFoundSwagger = NotFoundSwagger;
 __decorate([
-    (0, class_validator_1.IsNotEmpty)(),
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], CreateTodoDto.prototype, "task", void 0);
+], NotFoundSwagger.prototype, "message", void 0);
 __decorate([
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], NotFoundSwagger.prototype, "error", void 0);
+__decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", Number)
-], CreateTodoDto.prototype, "isDone", void 0);
-//# sourceMappingURL=create-todo.dto.js.map
+], NotFoundSwagger.prototype, "statusCode", void 0);
+//# sourceMappingURL=not-found.swagger.js.map
