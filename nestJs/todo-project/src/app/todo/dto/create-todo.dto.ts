@@ -4,12 +4,12 @@ import { IsNotEmpty } from "class-validator";
 export class CreateTodoDto {
 
     @IsNotEmpty()
-    //mostra no swagger que essa propriedade deve ser usada
+    //shows in swagger that this property should be used
     @ApiProperty()
     task: string;
 
     @IsNotEmpty()
-    //mostra no swagger que essa propriedade deve ser usada
+    //shows in swagger that this property should be used
     @ApiProperty()
     isDone: number;
 }

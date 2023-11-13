@@ -31,7 +31,8 @@ export class TodoEntity {
     deletedAt: string; 
 
     
-    // todos os parametros do construtor devem ser opcionais
+    
+// all constructor parameters must be optional
     constructor(todo?: Partial<TodoEntity>) {
         this.id = todo?.id;
         this.task = todo?.task;

@@ -17,7 +17,7 @@ async function bootstrap() {
   SwaggerModule.setup('swagger', app, document);
   ////
 
-  // VALIDAÇÃO DE ERRO COM A CLASSE class-validator
+  // ERROR VALIDATION WITH CLASS class-validator
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,
     forbidNonWhitelisted: true

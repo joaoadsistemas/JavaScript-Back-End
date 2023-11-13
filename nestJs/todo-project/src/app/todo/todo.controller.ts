@@ -23,13 +23,13 @@ import { BadRequestSwagger } from './helpers/bad-request.swagger';
 import { NotFoundSwagger } from './helpers/not-found.swagger';
 
 @Controller('api/v1/todos')
-// muda o nome do titulo no swagger
+// change the title name in swagger
 @ApiTags('todos')
 export class TodoController {
   constructor(private readonly todoService: TodoService) {}
 
   @Get(':id')
-  // Usado para descrever no swagger oq faz
+  // Used to describe in swagger what it does
   @ApiOperation({ summary: 'Exibir os dados de uma tarefa' })
   @ApiResponse({ status: 200, description: "Dados de uma tarefa retornada com sucesso", type: ShowTodoSwagger})
   @ApiResponse({ status: 404, description: "Tarefa não foi encontrada", type: NotFoundSwagger })
