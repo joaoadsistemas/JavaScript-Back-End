@@ -19,7 +19,8 @@ async function bootstrap() {
 
   // VALIDAÇÃO DE ERRO COM A CLASSE class-validator
   app.useGlobalPipes(new ValidationPipe({
-    whitelist: true
+    whitelist: true,
+    forbidNonWhitelisted: true
   }));
   ///
   
