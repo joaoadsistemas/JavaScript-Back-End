@@ -18,7 +18,9 @@ async function bootstrap() {
   ////
 
   // VALIDAÇÃO DE ERRO COM A CLASSE class-validator
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe({
+    whitelist: true
+  }));
   ///
   
   await app.listen(3000);
